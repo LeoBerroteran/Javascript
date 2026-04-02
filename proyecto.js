@@ -4,11 +4,18 @@
   el usuario debe ingresar su eleccion, luego la computadora hara una eleccion aleatoria (investigar como generar un numero aleatorio en JavaScript),
   y se mostrara el resultado de quien gano.*/
 
-  let opciones = ["Piedra", "Papel", "Tijera"];
-  let eleccionUsuario = prompt("Elige: Piedra, Papel o Tijera");
+  let opciones = ["piedra", "papel", "tijera"];
+  let eleccionUsuario = prompt ("Elige: piedra, papel o tijera");
   let eleccionCPU = opciones[Math.floor(Math.random() * opciones.length)];
   console.log('Eleccion usuario: ' + eleccionUsuario);
   console.log('Eleccion CPU: ' + eleccionCPU);
+  if (eleccionUsuario === eleccionCPU) {
+    console.log("empate");
+  }  else if ((eleccionUsuario === "piedra" && eleccionCPU === "tijera")) {
+    console.log("Has ganado"); 
+  } else if ((eleccionUsuario === "tijera" && eleccionCPU === "piedra")) {
+    console.log("Has perdido");
+  }
 
 
   /*2) Realiza una funcionalidad que permita al usuario ingresar un texto, y te muestre el numero de vocales, letras, palabras que tiene ese texto.*/
