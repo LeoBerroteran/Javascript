@@ -7,14 +7,14 @@
   let opciones = ["piedra", "papel", "tijera"];
   let eleccionUsuario = prompt ("Elige: piedra, papel o tijera");
   let eleccionCPU = opciones[Math.floor(Math.random() * opciones.length)];
-  console.log('Eleccion usuario: ' + eleccionUsuario);
-  console.log('Eleccion CPU: ' + eleccionCPU);
+  console.log('eleccion usuario: ' + eleccionUsuario);
+  console.log('eleccion CPU: ' + eleccionCPU);
   if (eleccionUsuario === eleccionCPU) {
     console.log("empate");
   }  else if ((eleccionUsuario === "piedra" && eleccionCPU === "tijera")) {
-    console.log("Has ganado"); 
+    console.log("has ganado"); 
   } else if ((eleccionUsuario === "tijera" && eleccionCPU === "piedra")) {
-    console.log("Has perdido");
+    console.log("has perdido");
   }
 
 
