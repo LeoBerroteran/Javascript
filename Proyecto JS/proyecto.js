@@ -5,7 +5,7 @@
   y se mostrara el resultado de quien gano.*/
 
   let opciones = ["piedra", "papel", "tijera"];
-  let eleccionUsuario = ("elige: piedra, papel o tijera").toLowerCase();
+  let eleccionUsuario = prompt("elige: piedra, papel o tijera").toLowerCase();
   let eleccionCPU = opciones[Math.floor(Math.random() * opciones.length)];
   console.log('eleccion usuario: ' + eleccionUsuario);
   console.log('eleccion CPU: ' + eleccionCPU);
