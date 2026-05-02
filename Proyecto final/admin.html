@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin - Catálogo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="guard.js"></script>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-blue-800 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Panel de Gestión (Admin)</h1>
+      <div class="flex gap-4">
+        <a href="catalogo.html" class="hover:underline text-blue-200">Ver Catálogo</a>
+        <button id="btnLogout" class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded">Cerrar Sesión</button>
+      </div>
+    </div>
+    </nav>
+  <main class="container mx-auto mt-8 p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-lg shadow-md h-fit">
+      <h2 class="text-lg font-bold mb-4" id="formTitle">Agregar Nuevo Producto</h2>
+      <form id="productoForm" class="space-y-4">
+        <input type="hidden" id="productoId">
+        <div>
+          <label class="block text-sm">Título</label>
+          <input type="text" id="titulo" required class="mt-1 w-full px-3 py-2 border rounded-md">
+        </div>
+        <div>
+          <label class="block text-sm">Precio ($)</label>
+          <input type="number" id="precio" step="0.01" required class="mt-1 w-full px-3 py-2 border rounded-md">
+        </div>
+          <div>
+            <label class="block text-sm">URL Imagen</label>
+            <input type="url" id="imagen" required class="mt-1 w-full px-3 py-2 border rounded-md">
+          </div>
+          <div>
+            <label class="block text-sm">Descripción</label>
+            <textarea id="descripcion" rows="3" required class="mt-1 w-full px-3 py-2 border rounded-md"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Guardar Producto</button>
+        </form>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md md:col-span-2 overflow-x-auto">
+        <h2 class="text-lg font-bold mb-4">Inventario Actual</h2>
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-50 border-b">
+                <th class="p-3">Imagen</th>
+                <th class="p-3">Título</th>
+                <th class="p-3">Precio</th>
+                <th class="p-3 text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaProductos"></tbody>
+            </table>
+        </div>
+    </main>
+    <script src="db.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
