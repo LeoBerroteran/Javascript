@@ -1,4 +1,3 @@
-// db.js - Gestión de la persistencia de datos
 function inicializarBaseDeDatos() {
   const usuariosGuardados = localStorage.getItem('users');
   if (!usuariosGuardados) {

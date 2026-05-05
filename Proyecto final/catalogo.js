@@ -1,27 +1,25 @@
 const sesionActiva = JSON.parse(localStorage.getItem('activeUser'));
-const productos = JSON.parse(localStorage.getItem('products')) || [];
+let productos = JSON.parse(localStorage.getItem('products')) || [];
 
 const gridProductos = document.getElementById('gridProductos');
 const nombreUsuario = document.getElementById('nombreUsuario');
 const linkAdmin = document.getElementById('linkAdmin');
-const btnLogout = document.getElementById('btnLogout');
 
-nombreUsuario.innerText = sesionActiva.nombre;
-if (sesionActiva.role === 'admin') linkAdmin.classList.remove('hidden');
-
-if (btnLogout) {
-  btnLogout.addEventListener('click', () => {
-    localStorage.removeItem('activeUser');
-    window.location.href = 'login.html';
-  });
+if (sesionActiva) {
+  nombreUsuario.innerText = sesionActiva.nombre;
+  if (sesionActiva.role === 'admin') {
+    linkAdmin.classList.remove('hidden');
+  }
 }
 
 function cargarCatalogo() {
   gridProductos.innerHTML = '';
+  
   if (productos.length === 0) {
     gridProductos.innerHTML = `<p class="col-span-full text-center text-gray-500 py-10">No hay productos disponibles.</p>`;
     return;
   }
+  
   productos.forEach(producto => {
     const card = document.createElement('div');
     card.className = "bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg";
@@ -36,7 +34,15 @@ function cargarCatalogo() {
         </div>
       </div>
     `;
-      gridProductos.appendChild(card);
+    gridProductos.appendChild(card);
   });
 }
+
 cargarCatalogo();
+
+window.addEventListener('storage', (e) => {
+  if (e.key === 'products') {
+    productos = JSON.parse(e.newValue) || [];
+    cargarCatalogo();
+  }
+});
